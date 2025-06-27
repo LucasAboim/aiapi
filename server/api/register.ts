@@ -1,7 +1,6 @@
 import { OpenAI } from 'openai'
 import { useSupabase } from '~/server/utils/useSupabase'
 
-
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
     const domain = body.domain
@@ -37,7 +36,7 @@ export default defineEventHandler(async (event) => {
         const openai = new OpenAI({ apiKey: config.OPENAI_API_KEY })
 
         const completion = await openai.chat.completions.create({
-            model: 'gpt-4',
+            model: 'gpt-4o-mini',
             messages: [{
                 role: 'system',
                 content: 'Stay concise and helpful. Always focus on the context of the current site.'
